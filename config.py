@@ -1,7 +1,9 @@
 
 N_SAMPLES = 100
-KAPPA = 15
+import geomstats.backend as gs
 
+KAPPA = 15
+PRECISION = gs.array([[20, 11], [1, 20]])
 SCALING_FACTOR_PC1 = 0.5
 SCALING_FACTOR_PC2 = 0.25
 
@@ -20,10 +22,10 @@ COLORS = {
 }
 
 MARKER_SIZES = {
-    "data": 2,
+    "data": 4,
     "frechet_mean": 10,
-    "reconstructed": 3,
-    "full_reconstruction": 3,
+    "reconstructed": 4,
+    "full_reconstruction": 4,
 }
 
 LINE_WIDTHS = {
