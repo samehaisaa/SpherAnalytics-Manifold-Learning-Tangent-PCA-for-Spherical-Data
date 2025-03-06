@@ -55,7 +55,7 @@ def build_figure(data, mean_estimate, X_sphere, Y_sphere, Z_sphere,
     fig.add_trace(go.Surface(
         x=X_tangent, y=Y_tangent, z=Z_tangent,
         colorscale=config.COLORS["tangent_plane"], opacity=config.OPACITIES["tangent_plane"],
-        showscale=False, name="Tangent Plane"
+        showscale=False, name="Tangent Plane",showlegend=True
     ))
 
     (pc1_start, pc1_end), (pc2_start, pc2_end) = create_pc_lines(mean_estimate, principal_directions)

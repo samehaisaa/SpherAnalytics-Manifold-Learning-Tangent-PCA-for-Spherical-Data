@@ -1,7 +1,7 @@
 # main.py
 import streamlit as st
 import geomstats.backend as gs
-from data import generate_data, compute_frechet_mean, compute_tangent_pca
+from data import generate_data, compute_frechet_mean, compute_tangent_pca,generate_data_normal
 from visualization import create_sphere_mesh, create_tangent_plane_grid, build_figure
 import config
 
@@ -9,12 +9,10 @@ def main():
     st.sidebar.title("Input Parameters")
     n_samples = st.sidebar.slider("Number of Data Points", min_value=10, max_value=500,
                                   value=config.N_SAMPLES, step=10)
-    kappa = st.sidebar.slider("Kappa (Concentration)", min_value=1, max_value=50,
-                              value=config.KAPPA, step=1)
     num_components_retained = st.sidebar.selectbox("Number of Components to Retain", [1, 2])
     
     # Data generation & PCA
-    sphere, data = generate_data(n_samples, kappa)
+    sphere, data = generate_data_normal(n_samples, config.PRECISION)
     mean_estimate = compute_frechet_mean(sphere, data)
     tpca = compute_tangent_pca(sphere, data, mean_estimate)
     principal_directions = tpca.components_
